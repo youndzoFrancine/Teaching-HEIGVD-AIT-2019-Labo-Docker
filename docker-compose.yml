@@ -1,6 +1,7 @@
 version: "3.5"
 
 services :
+
   webapp1:
        container_name: ${WEBAPP_1_NAME}
        build:
@@ -14,7 +15,6 @@ services :
        environment:
             - TAG=${WEBAPP_1_NAME}
             - SERVER_IP=${WEBAPP_1_IP}
-
   webapp2:
        container_name: ${WEBAPP_2_NAME}
        build:
@@ -28,7 +28,45 @@ services :
        environment:
             - TAG=${WEBAPP_2_NAME}
             - SERVER_IP=${WEBAPP_2_IP}
-
+  webapp3:
+       container_name: ${WEBAPP_3_NAME}
+       build:
+         context: ./webapp
+         dockerfile: Dockerfile
+       networks:
+         heig:
+           ipv4_address: ${WEBAPP_3_IP}
+       ports:
+         - "4002:3000"
+       environment:
+            - TAG=${WEBAPP_3_NAME}
+            - SERVER_IP=${WEBAPP_3_IP}
+  webapp4:
+       container_name: ${WEBAPP_4_NAME}
+       build:
+         context: ./webapp
+         dockerfile: Dockerfile
+       networks:
+         heig:
+           ipv4_address: ${WEBAPP_4_IP}
+       ports:
+         - "4003:3000"
+       environment:
+            - TAG=${WEBAPP_4_NAME}
+            - SERVER_IP=${WEBAPP_4_IP}
+  webapp5:
+       container_name: ${WEBAPP_5_NAME}
+       build:
+         context: ./webapp
+         dockerfile: Dockerfile
+       networks:
+         heig:
+           ipv4_address: ${WEBAPP_5_IP}
+       ports:
+         - "4004:3000"
+       environment:
+            - TAG=${WEBAPP_5_NAME}
+            - SERVER_IP=${WEBAPP_5_IP}
   haproxy:
        container_name: ha
        build:
@@ -48,6 +86,9 @@ services :
        environment:
             - WEBAPP_1_IP=${WEBAPP_1_IP}
             - WEBAPP_2_IP=${WEBAPP_2_IP}
+            - WEBAPP_3_IP=${WEBAPP_3_IP}
+            - WEBAPP_4_IP=${WEBAPP_4_IP}
+            - WEBAPP_5_IP=${WEBAPP_5_IP}
 networks:
     heig:
         name: heig
