@@ -83,7 +83,7 @@ In this lab, we will find many solutions to solve problems encounter with the ac
    
    Deliverables:
 
-    Take a screenshot of the stats page of HAProxy at http://192.168.42.42:1936. You should see your backend nodes.
+    Take a screenshot of the stats page of HAProxy at http://localhost:1936. You should see your backend nodes.
     
     ![](captures/Task0M2_5.jpg)
 
